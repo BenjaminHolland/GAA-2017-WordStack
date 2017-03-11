@@ -24,7 +24,10 @@ dependencies {
     androidTestCompile('com.android.support.test.espresso:espresso-core:2.2.2', {
         exclude group: 'com.android.support', module: 'support-annotations'
     })
+    compile 'io.reactivex.rxjava2:rxandroid:+'
     compile 'com.android.support:design:23.4.0'
     compile 'com.android.support:appcompat-v7:23.4.0'
+    compile "io.reactivex.rxjava2:rxjava:+"
+    compile group: 'com.google.guava', name: 'guava', version: '19.0'
     testCompile 'junit:junit:4.12'
 }

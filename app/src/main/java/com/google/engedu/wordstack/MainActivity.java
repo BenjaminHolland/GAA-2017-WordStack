@@ -56,6 +56,9 @@ public class MainActivity extends AppCompatActivity {
             String line = null;
             while((line = in.readLine()) != null) {
                 String word = line.trim();
+                if(word.length()==WORD_LENGTH){
+                    words.add(word);
+                }
                 /**
                  **
                  **  YOUR CODE GOES HERE
