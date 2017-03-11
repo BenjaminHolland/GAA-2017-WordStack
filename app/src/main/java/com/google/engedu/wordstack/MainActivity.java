@@ -41,6 +41,7 @@ public class MainActivity extends AppCompatActivity {
     public static final int LIGHT_BLUE = Color.rgb(176, 200, 255);
     public static final int LIGHT_GREEN = Color.rgb(200, 255, 200);
     private ArrayList<String> words = new ArrayList<>();
+    private Stack<LetterTile> placedTiles=new Stack<>();
     private Random random = new Random();
     private StackedLayout stackedLayout;
     private String word1, word2;
@@ -88,6 +89,7 @@ public class MainActivity extends AppCompatActivity {
                     TextView messageBox = (TextView) findViewById(R.id.message_box);
                     messageBox.setText(word1 + " " + word2);
                 }
+                placedTiles.push(tile);
                 /**
                  **
                  **  YOUR CODE GOES HERE
@@ -186,6 +188,8 @@ public class MainActivity extends AppCompatActivity {
     }
 
     protected boolean onUndo(View view) {
+        LetterTile tile=placedTiles.pop();
+        tile.moveToViewGroup(stackedLayout);
         /**
          **
          **  YOUR CODE GOES HERE
