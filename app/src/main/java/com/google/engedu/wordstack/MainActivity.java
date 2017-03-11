@@ -157,14 +157,16 @@ public class MainActivity extends AppCompatActivity {
         StringBuilder bldr=new StringBuilder();
         int charIdx1,charIdx2;
         charIdx1=charIdx2=0;
-        while((charIdx1<word1.length())&&(charIdx2<word2.length())){
+        while(bldr.length()<word1.length()+word2.length()){
             if(charIdx1==word1.length()){
-                bldr.append(word2.substring(charIdx2));
+                bldr.append(word2.substring(charIdx2,word2.length()));
                 charIdx2=word2.length();
+                continue;
             }
             if(charIdx2==word2.length()) {
-                bldr.append(word1.substring(charIdx1));
+                bldr.append(word1.substring(charIdx1,word1.length()));
                 charIdx1 = word1.length();
+                continue;
             }
             if(random.nextBoolean()){
                 bldr.append(word1.charAt(charIdx1));
@@ -188,14 +190,19 @@ public class MainActivity extends AppCompatActivity {
     }
 
     protected boolean onUndo(View view) {
-        
-        LetterTile tile=placedTiles.pop();
-        tile.moveToViewGroup(stackedLayout);
+        if(!placedTiles.isEmpty()) {
+            LetterTile tile = placedTiles.pop();
+            tile.moveToViewGroup(stackedLayout);
+            return true;
+        }else{
+            //Is this right?
+            return false;
+        }
         /**
          **
          **  YOUR CODE GOES HERE
          **
          **/
-        return true;
+        //return true;
     }
 }
