@@ -146,6 +146,15 @@ public class MainActivity extends AppCompatActivity {
     protected boolean onStartGame(View view) {
         TextView messageBox = (TextView) findViewById(R.id.message_box);
         messageBox.setText("Game started");
+
+        int idx1,idx2;
+        idx1=random.nextInt(words.size());
+        idx2=random.nextInt(words.size());
+        while(idx1==idx2){
+            idx2=random.nextInt(words.size());
+        }
+        word1=words.get(idx1);
+        word2=words.get(idx2);
         /**
          **
          **  YOUR CODE GOES HERE
