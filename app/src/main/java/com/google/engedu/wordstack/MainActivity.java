@@ -59,11 +59,7 @@ public class MainActivity extends AppCompatActivity {
                 if(word.length()==WORD_LENGTH){
                     words.add(word);
                 }
-                /**
-                 **
-                 **  YOUR CODE GOES HERE
-                 **
-                 **/
+
             }
         } catch (IOException e) {
             Toast toast = Toast.makeText(this, "Could not load dictionary", Toast.LENGTH_LONG);
@@ -147,14 +143,37 @@ public class MainActivity extends AppCompatActivity {
         TextView messageBox = (TextView) findViewById(R.id.message_box);
         messageBox.setText("Game started");
 
-        int idx1,idx2;
-        idx1=random.nextInt(words.size());
-        idx2=random.nextInt(words.size());
-        while(idx1==idx2){
-            idx2=random.nextInt(words.size());
+        int wordIdx1,wordIdx2;
+        wordIdx1=random.nextInt(words.size());
+        wordIdx2=random.nextInt(words.size());
+        while(wordIdx1==wordIdx2){
+            wordIdx2=random.nextInt(words.size());
         }
-        word1=words.get(idx1);
-        word2=words.get(idx2);
+        word1=words.get(wordIdx1);
+        word2=words.get(wordIdx2);
+
+        StringBuilder bldr=new StringBuilder();
+        int charIdx1,charIdx2;
+        charIdx1=charIdx2=0;
+        while((charIdx1<word1.length())&&(charIdx2<word2.length())){
+            if(charIdx1==word1.length()){
+                bldr.append(word2.substring(charIdx2));
+                charIdx2=word2.length();
+            }
+            if(charIdx2==word2.length()) {
+                bldr.append(word1.substring(charIdx1));
+                charIdx1 = word1.length();
+            }
+            if(random.nextBoolean()){
+                bldr.append(word1.charAt(charIdx1));
+                charIdx1++;
+            }else{
+                bldr.append(word2.charAt(charIdx2));
+                charIdx2++;
+            }
+        }
+        String scrambledWord=bldr.toString();
+
         /**
          **
          **  YOUR CODE GOES HERE
