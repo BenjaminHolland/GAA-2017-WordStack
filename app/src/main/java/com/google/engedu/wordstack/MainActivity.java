@@ -174,7 +174,7 @@ public class MainActivity extends AppCompatActivity {
         }
         String scrambledWord=bldr.toString();
 
-        for(int i=0;i<scrambledWord.length();i++) {
+        for(int i=scrambledWord.length()-1;i>=0;i++) {
             stackedLayout.push(new LetterTile(this,scrambledWord.charAt(i)));
         }
         /**
